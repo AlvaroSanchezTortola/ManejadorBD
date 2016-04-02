@@ -1,3 +1,5 @@
+package manejadorbd;
+
 // Generated from sql.g4 by ANTLR 4.5.2
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
