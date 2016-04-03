@@ -5,6 +5,8 @@
  */
 package manejadorbd;
 
+import parser.sqlBaseListener;
+
 /**
  *
  * @author Álvaro
@@ -18,4 +20,12 @@ public class ManejadorBD {
         // TODO code application logic here
     }
     
+    public class AntlrDrinkListener extends sqlBaseListener {
+ 
+    @Override
+    public void enterDrink(sqlContext ctx) {
+        System.out.println(ctx.getText());
+    }
+ 
+}
 }
