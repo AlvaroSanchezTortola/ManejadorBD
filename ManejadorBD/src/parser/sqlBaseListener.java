@@ -1,4 +1,4 @@
-package manejadorbd;
+package parser;
 
 // Generated from sql.g4 by ANTLR 4.5.2
 
