@@ -37,10 +37,16 @@ public class ManejadorBD {
      * @param args the command line arguments
      */
   public static void main(String[] args) throws IOException {
+      JFrame frame = new JFrame();
       JTextPane textPane = new JTextPane();
       JScrollPane scrollPane = new JScrollPane(textPane);
       TextLineNumber tln = new TextLineNumber(textPane);
       scrollPane.setRowHeaderView( tln );
+      frame.add(scrollPane);
+      frame.pack();
+      frame.setVisible(true);
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      
       
     }
 }
