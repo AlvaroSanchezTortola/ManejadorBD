@@ -5,14 +5,15 @@
  */
 package ManejadorBD;
 
-import Parser.SQLBaseListener;
+import parser.SqlBaseListener;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 /**
  *
  * @author Álvaro
  */
-public class Context extends SQLBaseListener {
+public class Context extends SqlBaseListener {
+    @Override
     public void enterEveryRule(ParserRuleContext ctx){
         System.out.println(ctx.toString());
     }

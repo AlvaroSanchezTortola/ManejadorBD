@@ -6,8 +6,8 @@
 package gui;
 
 import ManejadorBD.ContextListener;
-import Parser.SQLLexer;
-import Parser.SQLParser;
+import parser.SqlLexer;
+import parser.SqlParser;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import manejadorbd.ExpVisitor;
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -28,12 +29,13 @@ import org.antlr.v4.runtime.tree.gui.TreeViewer;
  * @author olgac
  */
 public class Interfaz extends javax.swing.JFrame {
-    
+    private ExpVisitor recorrido;
     /**
      * Creates new form Interfaz
      */
     public Interfaz() {
         initComponents();
+        recorrido = new ExpVisitor();
     }
 
     /**
@@ -191,16 +193,24 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void Correr(String texto){
         CharStream input = new ANTLRInputStream(texto);        
-        SQLLexer lexer = new SQLLexer(input);
+        SqlLexer lexer = new SqlLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
-        SQLParser parser = new SQLParser(tokens);
-        parser.removeErrorListeners();
-        ContextListener errorListener = new ContextListener();
-        parser.addErrorListener(errorListener);
-        ParseTree tree = parser.Expre();
-        String t =tree.toStringTree(parser);
-        //System.out.print(t);
+        SqlParser parser = new SqlParser(tokens);
+        
+        //parser.removeErrorListeners();
+        //ContextListener errorListener = new ContextListener();
+        //parser.addErrorListener(errorListener);
+        
+        ParseTree tree = parser.program();
+        SqlParser.ProgramContext arbol = parser.program();
+        
         System.out.println(tree.toStringTree(parser));
+        System.out.println(arbol.toStringTree(parser));
+        recorrido.visitProgram(arbol);
+        
+        //String t =arbol.toStringTree(parser);
+        //System.out.print(t);
+        
         
         //show AST in GUI
         JFrame frame = new JFrame("Antlr AST");
@@ -214,8 +224,8 @@ public class Interfaz extends javax.swing.JFrame {
         frame.setSize(250,300);
         frame.setVisible(true);
         
-        String err = errorListener.getError();
-        this.salidaError.setText(err);
+        //String err = errorListener.getError();
+        //this.salidaError.setText(err);
     }
     
     /**
