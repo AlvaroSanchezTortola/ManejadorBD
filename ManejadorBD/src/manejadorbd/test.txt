@@ -1,1 +1,1 @@
-create database hola;
+SELECT olga FROM nose;
