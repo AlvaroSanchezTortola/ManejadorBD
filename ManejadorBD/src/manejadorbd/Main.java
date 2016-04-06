@@ -24,8 +24,8 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        String progra = "CREATE DATABASE hola ";
-        CharStream input = new ANTLRInputStream(progra);
+        String text = "CREATE DATABASE hola ";
+        CharStream input = new ANTLRInputStream(text);
         SQLLexer lexer = new SQLLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         SQLParser parser = new SQLParser(tokens);
