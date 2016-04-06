@@ -198,11 +198,11 @@ CHAR: '\''~('\r'|'\n'|'\'')* '\'';
 
 
 
-todo
-: (casitodo) (';'casitodo)* (';')?
+Expre
+: (Oracion) (';'Oracion)* (';')?
 ;
 
-casitodo
+Oracion
 : 	database
 | 	table
 |	data

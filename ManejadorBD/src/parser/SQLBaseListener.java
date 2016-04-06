@@ -689,13 +689,13 @@ public class SQLBaseListener implements SQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTodo(@NotNull SQLParser.TodoContext ctx) { }
+	@Override public void enterExpre(@NotNull SQLParser.ExpreContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTodo(@NotNull SQLParser.TodoContext ctx) { }
+	@Override public void exitExpre(@NotNull SQLParser.ExpreContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -725,13 +725,13 @@ public class SQLBaseListener implements SQLListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterCasitodo(@NotNull SQLParser.CasitodoContext ctx) { }
+	@Override public void enterOracion(@NotNull SQLParser.OracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitCasitodo(@NotNull SQLParser.CasitodoContext ctx) { }
+	@Override public void exitOracion(@NotNull SQLParser.OracionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

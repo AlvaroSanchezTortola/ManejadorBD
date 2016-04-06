@@ -5,12 +5,30 @@
  */
 package gui;
 
+import ManejadorBD.ContextListener;
+import Parser.SQLLexer;
+import Parser.SQLParser;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import org.antlr.v4.runtime.tree.ParseTree;
+import org.antlr.v4.runtime.tree.gui.TreeViewer;
+
 /**
  *
  * @author olgac
  */
 public class Interfaz extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Interfaz
      */
@@ -139,16 +157,67 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    private static String readFileAsString(String filePath) throws java.io.IOException{
+	    byte[] buffer = new byte[(int) new File(filePath).length()];
+	    BufferedInputStream f = null;
+	    try {
+	        f = new BufferedInputStream(new FileInputStream(filePath));
+	        f.read(buffer);
+	        if (f != null) try { f.close(); } catch (IOException ignored) { }
+	    } catch (IOException ignored) { System.out.println("File not found or invalid path.");}
+	    return new String(buffer);
+	}
+    
     private void botonAbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAbrirActionPerformed
-        AbrirArchivo buscar = new AbrirArchivo();
-        buscar.Abrir();
-        String direccionArchivo = buscar.getPath();
+                
+        String text = null;
+        try {
+            text = readFileAsString("C:\\Users\\Álvaro\\Documents\\NetBeansProjects\\ManejadorBD\\ManejadorBD\\src\\manejadorbd\\test.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(Interfaz.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        Correr(text);
+        
+        
     }//GEN-LAST:event_botonAbrirActionPerformed
 
     private void botonPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonPlayActionPerformed
+        String querie = this.ingreso.getText();
+        Correr(querie);
+        
         
     }//GEN-LAST:event_botonPlayActionPerformed
 
+    private void Correr(String texto){
+        CharStream input = new ANTLRInputStream(texto);        
+        SQLLexer lexer = new SQLLexer(input);
+        CommonTokenStream tokens = new CommonTokenStream(lexer);
+        SQLParser parser = new SQLParser(tokens);
+        parser.removeErrorListeners();
+        ContextListener errorListener = new ContextListener();
+        parser.addErrorListener(errorListener);
+        ParseTree tree = parser.Expre();
+        String t =tree.toStringTree(parser);
+        //System.out.print(t);
+        System.out.println(tree.toStringTree(parser));
+        
+        //show AST in GUI
+        JFrame frame = new JFrame("Antlr AST");
+        JPanel panel = new JPanel();
+        TreeViewer viewr = new TreeViewer(Arrays.asList(
+        parser.getRuleNames()),tree);
+        viewr.setScale(1.5);//scale a little
+        panel.add(viewr);
+        frame.add(panel);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(250,300);
+        frame.setVisible(true);
+        
+        String err = errorListener.getError();
+        this.salidaError.setText(err);
+    }
+    
     /**
      * @param args the command line arguments
      */

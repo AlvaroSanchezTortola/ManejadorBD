@@ -627,15 +627,15 @@ public interface SQLListener extends ParseTreeListener {
 	 */
 	void exitExpEq(@NotNull SQLParser.ExpEqContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SQLParser#todo}.
+	 * Enter a parse tree produced by {@link SQLParser#Expre}.
 	 * @param ctx the parse tree
 	 */
-	void enterTodo(@NotNull SQLParser.TodoContext ctx);
+	void enterExpre(@NotNull SQLParser.ExpreContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SQLParser#todo}.
+	 * Exit a parse tree produced by {@link SQLParser#Expre}.
 	 * @param ctx the parse tree
 	 */
-	void exitTodo(@NotNull SQLParser.TodoContext ctx);
+	void exitExpre(@NotNull SQLParser.ExpreContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code expFactor}
 	 * labeled alternative in {@link SQLParser#unifactor}.
@@ -661,15 +661,15 @@ public interface SQLListener extends ParseTreeListener {
 	 */
 	void exitExpParentheses(@NotNull SQLParser.ExpParenthesesContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link SQLParser#casitodo}.
+	 * Enter a parse tree produced by {@link SQLParser#Oracion}.
 	 * @param ctx the parse tree
 	 */
-	void enterCasitodo(@NotNull SQLParser.CasitodoContext ctx);
+	void enterOracion(@NotNull SQLParser.OracionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link SQLParser#casitodo}.
+	 * Exit a parse tree produced by {@link SQLParser#Oracion}.
 	 * @param ctx the parse tree
 	 */
-	void exitCasitodo(@NotNull SQLParser.CasitodoContext ctx);
+	void exitOracion(@NotNull SQLParser.OracionContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code renameTB}
 	 * labeled alternative in {@link SQLParser#table}.

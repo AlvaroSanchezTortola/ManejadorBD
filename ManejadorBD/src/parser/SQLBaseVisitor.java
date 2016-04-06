@@ -410,7 +410,7 @@ public class SQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements SQ
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitTodo(@NotNull SQLParser.TodoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitExpre(@NotNull SQLParser.ExpreContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -431,7 +431,7 @@ public class SQLBaseVisitor<T> extends AbstractParseTreeVisitor<T> implements SQ
 	 * <p>The default implementation returns the result of calling
 	 * {@link #visitChildren} on {@code ctx}.</p>
 	 */
-	@Override public T visitCasitodo(@NotNull SQLParser.CasitodoContext ctx) { return visitChildren(ctx); }
+	@Override public T visitOracion(@NotNull SQLParser.OracionContext ctx) { return visitChildren(ctx); }
 	/**
 	 * {@inheritDoc}
 	 *

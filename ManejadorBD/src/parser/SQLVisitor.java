@@ -377,11 +377,11 @@ public interface SQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpEq(@NotNull SQLParser.ExpEqContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SQLParser#todo}.
+	 * Visit a parse tree produced by {@link SQLParser#Expre}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTodo(@NotNull SQLParser.TodoContext ctx);
+	T visitExpre(@NotNull SQLParser.ExpreContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code expFactor}
 	 * labeled alternative in {@link SQLParser#unifactor}.
@@ -397,11 +397,11 @@ public interface SQLVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitExpParentheses(@NotNull SQLParser.ExpParenthesesContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link SQLParser#casitodo}.
+	 * Visit a parse tree produced by {@link SQLParser#Oracion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitCasitodo(@NotNull SQLParser.CasitodoContext ctx);
+	T visitOracion(@NotNull SQLParser.OracionContext ctx);
 	/**
 	 * Visit a parse tree produced by the {@code renameTB}
 	 * labeled alternative in {@link SQLParser#table}.

@@ -38,7 +38,7 @@ public class SQLParser extends Parser {
 		"MULTILINE_COMMENT", "ID", "NUM", "UNUM", "DATE", "CHAR"
 	};
 	public static final int
-		RULE_todo = 0, RULE_casitodo = 1, RULE_database = 2, RULE_data = 3, RULE_table = 4, 
+		RULE_Expre = 0, RULE_Oracion = 1, RULE_database = 2, RULE_data = 3, RULE_table = 4, 
 		RULE_constraints = 5, RULE_tableAction = 6, RULE_tipo = 7, RULE_constraint = 8, 
 		RULE_references = 9, RULE_exp = 10, RULE_expr = 11, RULE_exp2 = 12, RULE_exp3 = 13, 
 		RULE_exp4 = 14, RULE_unifactor = 15, RULE_factor = 16, RULE_literal = 17, 
@@ -49,7 +49,7 @@ public class SQLParser extends Parser {
 		RULE_asignacion = 33, RULE_condicion = 34, RULE_delete = 35, RULE_query = 36, 
 		RULE_column = 37, RULE_orderby = 38, RULE_expresion = 39;
 	public static final String[] ruleNames = {
-		"todo", "casitodo", "database", "data", "table", "constraints", "tableAction", 
+		"Expre", "Oracion", "database", "data", "table", "constraints", "tableAction", 
 		"tipo", "constraint", "references", "exp", "expr", "exp2", "exp3", "exp4", 
 		"unifactor", "factor", "literal", "logicExp", "logicExpNot", "logicExpOr", 
 		"logicExpAnd", "relationalExpEq", "relationalExpGL", "relationalExp", 
@@ -77,42 +77,42 @@ public class SQLParser extends Parser {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
-	public static class TodoContext extends ParserRuleContext {
-		public CasitodoContext casitodo(int i) {
-			return getRuleContext(CasitodoContext.class,i);
+	public static class ExpreContext extends ParserRuleContext {
+		public OracionContext Oracion(int i) {
+			return getRuleContext(OracionContext.class,i);
 		}
-		public List<CasitodoContext> casitodo() {
-			return getRuleContexts(CasitodoContext.class);
+		public List<OracionContext> Oracion() {
+			return getRuleContexts(OracionContext.class);
 		}
-		public TodoContext(ParserRuleContext parent, int invokingState) {
+		public ExpreContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_todo; }
+		@Override public int getRuleIndex() { return RULE_Expre; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SQLListener ) ((SQLListener)listener).enterTodo(this);
+			if ( listener instanceof SQLListener ) ((SQLListener)listener).enterExpre(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SQLListener ) ((SQLListener)listener).exitTodo(this);
+			if ( listener instanceof SQLListener ) ((SQLListener)listener).exitExpre(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SQLVisitor ) return ((SQLVisitor<? extends T>)visitor).visitTodo(this);
+			if ( visitor instanceof SQLVisitor ) return ((SQLVisitor<? extends T>)visitor).visitExpre(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final TodoContext todo() throws RecognitionException {
-		TodoContext _localctx = new TodoContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_todo);
+	public final ExpreContext Expre() throws RecognitionException {
+		ExpreContext _localctx = new ExpreContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_Expre);
 		int _la;
 		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
 			{
-			setState(80); casitodo();
+			setState(80); Oracion();
 			}
 			setState(85);
 			_errHandler.sync(this);
@@ -122,7 +122,7 @@ public class SQLParser extends Parser {
 					{
 					{
 					setState(81); match(T__11);
-					setState(82); casitodo();
+					setState(82); Oracion();
 					}
 					} 
 				}
@@ -151,7 +151,7 @@ public class SQLParser extends Parser {
 		return _localctx;
 	}
 
-	public static class CasitodoContext extends ParserRuleContext {
+	public static class OracionContext extends ParserRuleContext {
 		public TableContext table() {
 			return getRuleContext(TableContext.class,0);
 		}
@@ -161,28 +161,28 @@ public class SQLParser extends Parser {
 		public DatabaseContext database() {
 			return getRuleContext(DatabaseContext.class,0);
 		}
-		public CasitodoContext(ParserRuleContext parent, int invokingState) {
+		public OracionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_casitodo; }
+		@Override public int getRuleIndex() { return RULE_Oracion; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof SQLListener ) ((SQLListener)listener).enterCasitodo(this);
+			if ( listener instanceof SQLListener ) ((SQLListener)listener).enterOracion(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof SQLListener ) ((SQLListener)listener).exitCasitodo(this);
+			if ( listener instanceof SQLListener ) ((SQLListener)listener).exitOracion(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof SQLVisitor ) return ((SQLVisitor<? extends T>)visitor).visitCasitodo(this);
+			if ( visitor instanceof SQLVisitor ) return ((SQLVisitor<? extends T>)visitor).visitOracion(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final CasitodoContext casitodo() throws RecognitionException {
-		CasitodoContext _localctx = new CasitodoContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_casitodo);
+	public final OracionContext Oracion() throws RecognitionException {
+		OracionContext _localctx = new OracionContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_Oracion);
 		try {
 			setState(94);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
