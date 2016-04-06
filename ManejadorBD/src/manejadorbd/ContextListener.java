@@ -34,10 +34,9 @@ public  class ContextListener extends BaseErrorListener {
 	public void syntaxError(Recognizer<?, ?> recognizer,Object offendingSymbol, int line,int charPositionInLine,String msg,RecognitionException e) {
 		List<String> stack = ((Parser)recognizer).getRuleInvocationStack();
 		Collections.reverse(stack);			
-		System.err.println("line "+line+":"+charPositionInLine+" at "+
+		System.err.println("Línea "+line+":"+charPositionInLine+" en "+
 		offendingSymbol+": "+msg);
-		//error = "line "+line+":"+charPositionInLine+" at "+	offendingSymbol+": "+msg;
-		error += "line "+line+":"+charPositionInLine+" -->: "+msg+"\n";
+		error += "Línea "+line+":"+charPositionInLine+" >> "+msg+"\n";
 	}
 	public String getError(){
 		return error;
